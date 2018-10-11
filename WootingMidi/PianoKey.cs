@@ -26,6 +26,44 @@ namespace WootingMidi
         }
         public static RawMidiMessage None { get; } = new RawMidiMessage {Valid = false};
     }
+
+    public static class MidiCc
+    {
+        public const byte CcPrefix = 0b1011_0000;
+
+        public static RawMidiMessage Generate(int chan, int cc, double val)
+        {
+            var pre = (byte)(CcPrefix | ((byte)chan & 0x0F));
+            var hi = (byte)((byte)cc & 0b01111111);
+            var lo = (byte)((byte)(val * 127.0) & 0b01111111);
+            return Settings.Last.SendCc ? new RawMidiMessage
+            {
+                Pre = pre,
+                Id = hi,
+                Param = lo,
+                Valid = true
+            } : RawMidiMessage.None;
+        }
+    }
+
+    public static class MidiChannelAt
+    {
+        public const byte AtPrefix = 0b1101_0000;
+
+        public static RawMidiMessage Generate(int chan, double val)
+        {
+            var pre = (byte)(AtPrefix | ((byte)chan & 0x0F));
+            var lo = (byte)((byte)(val * 127.0) & 0b01111111);
+            return Settings.Last.SendCc ? new RawMidiMessage
+            {
+                Pre = pre,
+                Id = lo,
+                Param = lo,
+                Valid = true
+            } : RawMidiMessage.None;
+        }
+    }
+
     public class NoteKey
     {
         public const byte NoteOnPrefix = 0b1001_0000;
@@ -100,23 +138,23 @@ namespace WootingMidi
                 {
                     Aftertouching = false;
                     NoteOff = true;
-                    return MidiNoteOff();
+                    return Settings.Last.SendNote ? MidiNoteOff() : RawMidiMessage.None;
                 }
                 else
                 {
-                    return MidiAftertouch();
+                    return Settings.Last.SendAt ? MidiAftertouch() : RawMidiMessage.None;
                 }
             }
             if (NoteOn)
             {
                 NoteOn = false;
                 Aftertouching = true;
-                return MidiAftertouch();
+                return Settings.Last.SendAt ? MidiAftertouch() : RawMidiMessage.None;
             }
             if (currval > Threshold)
             {
                 NoteOn = true;
-                return MidiNoteOn();
+                return Settings.Last.SendNote ? MidiNoteOn() : RawMidiMessage.None;
             }
             return RawMidiMessage.None;
         }

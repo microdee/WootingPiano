@@ -40,6 +40,9 @@
     <Reference Include="Commons.Music.Midi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\managed-midi.1.2.1\lib\net45\Commons.Music.Midi.dll</HintPath>
     </Reference>
+    <Reference Include="FluentWPF, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentWPF.0.3.2\lib\net45\FluentWPF.dll</HintPath>
+    </Reference>
     <Reference Include="HidSharp, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HidSharp.2.0.2\lib\net35\HidSharp.dll</HintPath>
     </Reference>
@@ -84,6 +87,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObservableDict.cs" />
     <Compile Include="Octave.xaml.cs">
       <DependentUpon>Octave.xaml</DependentUpon>
     </Compile>

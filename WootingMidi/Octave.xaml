@@ -6,6 +6,46 @@
              xmlns:local="clr-namespace:WootingMidi"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Width="120" Height="100">
+    <UserControl.Resources>
+        <Style x:Key="MajorVelProgStyle" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        </Style>
+        <Style x:Key="MajorPressProgStyle" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Background" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="#FF8F8F8F"></Setter>
+        </Style>
+        <Style x:Key="MinorVelProgStyle" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MinorPressProgStyle" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="Foreground" Value="#FF494949"></Setter>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -21,70 +61,30 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ProgressBar x:Name="C" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="0" Grid.Row="1" />
-        <ProgressBar x:Name="D" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="1" Grid.Row="1" />
-        <ProgressBar x:Name="E" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="2" Grid.Row="1" />
-        <ProgressBar x:Name="F" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="3" Grid.Row="1" />
-        <ProgressBar x:Name="G" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="4" Grid.Row="1" />
-        <ProgressBar x:Name="A" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="5" Grid.Row="1" />
-        <ProgressBar x:Name="H" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="6" Grid.Row="1" />
-        <ProgressBar x:Name="CVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="0" Grid.Row="1" Margin="0,0,9,0" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" />
-        <ProgressBar x:Name="DVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="1" Grid.Row="1" Margin="0,0,9,0" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" />
-        <ProgressBar x:Name="EVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="2" Grid.Row="1" Margin="0,0,9,0" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" />
-        <ProgressBar x:Name="FVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="3" Grid.Row="1" Margin="0,0,9,0" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" />
-        <ProgressBar x:Name="GVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="4" Grid.Row="1" Margin="0,0,9,0" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" />
-        <ProgressBar x:Name="AVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="5" Grid.Row="1" Margin="0,0,9,0" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" />
-        <ProgressBar x:Name="HVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="6" Grid.Row="1" Margin="0,0,9,0" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" />
-        <ProgressBar x:Name="CSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,19" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="DSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,19" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="FSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,19" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="1" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="GSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,19" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="ASharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,19" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="5" Grid.Row="1" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
+        <ProgressBar x:Name="C" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="0" Grid.Row="1" Style="{StaticResource MajorPressProgStyle}" />
+        <ProgressBar x:Name="D" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="1" Grid.Row="1" Style="{StaticResource MajorPressProgStyle}" />
+        <ProgressBar x:Name="E" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="2" Grid.Row="1" Style="{StaticResource MajorPressProgStyle}" />
+        <ProgressBar x:Name="F" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="3" Grid.Row="1" Style="{StaticResource MajorPressProgStyle}" />
+        <ProgressBar x:Name="G" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="4" Grid.Row="1" Style="{StaticResource MajorPressProgStyle}" />
+        <ProgressBar x:Name="A" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="5" Grid.Row="1" Style="{StaticResource MajorPressProgStyle}" />
+        <ProgressBar x:Name="H" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="6" Grid.Row="1" Style="{StaticResource MajorPressProgStyle}" />
+        <ProgressBar x:Name="CVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="0" Grid.Row="1" Margin="0,0,9,0" Style="{StaticResource MajorVelProgStyle}" />
+        <ProgressBar x:Name="DVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="1" Grid.Row="1" Margin="0,0,9,0" Style="{StaticResource MajorVelProgStyle}" />
+        <ProgressBar x:Name="EVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="2" Grid.Row="1" Margin="0,0,9,0" Style="{StaticResource MajorVelProgStyle}" />
+        <ProgressBar x:Name="FVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="3" Grid.Row="1" Margin="0,0,9,0" Style="{StaticResource MajorVelProgStyle}" />
+        <ProgressBar x:Name="GVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="4" Grid.Row="1" Margin="0,0,9,0" Style="{StaticResource MajorVelProgStyle}" />
+        <ProgressBar x:Name="AVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="5" Grid.Row="1" Margin="0,0,9,0" Style="{StaticResource MajorVelProgStyle}" />
+        <ProgressBar x:Name="HVel" RenderTransformOrigin="0.5,0.5" Orientation="Vertical" Value="0" Grid.Column="6" Grid.Row="1" Margin="0,0,9,0" Style="{StaticResource MajorVelProgStyle}" />
+        <ProgressBar x:Name="CSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,27" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Style="{StaticResource MinorPressProgStyle}" />
+        <ProgressBar x:Name="DSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,27" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" Style="{StaticResource MinorPressProgStyle}" />
+        <ProgressBar x:Name="FSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,27" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="1" Style="{StaticResource MinorPressProgStyle}" />
+        <ProgressBar x:Name="GSharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,27" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1" Style="{StaticResource MinorPressProgStyle}" />
+        <ProgressBar x:Name="ASharp" RenderTransformOrigin="0.5,0.5" Margin="12,0,12,27" Orientation="Vertical" Value="0" Grid.ColumnSpan="2" Grid.Column="5" Grid.Row="1" Style="{StaticResource MinorPressProgStyle}" />
+        <ProgressBar x:Name="CSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,27" Orientation="Vertical" Value="0" Grid.Column="0" Grid.Row="1" Style="{StaticResource MinorVelProgStyle}" />
+        <ProgressBar x:Name="DSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,27" Orientation="Vertical" Value="0" Grid.Column="1" Grid.Row="1" Style="{StaticResource MinorVelProgStyle}" />
+        <ProgressBar x:Name="FSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,27" Orientation="Vertical" Value="0" Grid.Column="3" Grid.Row="1" Style="{StaticResource MinorVelProgStyle}" />
+        <ProgressBar x:Name="GSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,27" Orientation="Vertical" Value="0" Grid.Column="4" Grid.Row="1" Style="{StaticResource MinorVelProgStyle}" />
+        <ProgressBar x:Name="ASharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,27" Orientation="Vertical" Value="0" Grid.Column="5" Grid.Row="1" Style="{StaticResource MinorVelProgStyle}" />
         <TextBlock x:Name="CKey" Grid.Row="2" TextWrapping="Wrap" Text="Z" Grid.Column="0" TextAlignment="Center"/>
         <TextBlock x:Name="DKey" Grid.Row="2" TextWrapping="Wrap" Text="X" Grid.Column="1" TextAlignment="Center"/>
         <TextBlock x:Name="EKey" Grid.Row="2" TextWrapping="Wrap" Text="C" Grid.Column="2" TextAlignment="Center"/>
@@ -97,55 +97,5 @@
         <TextBlock x:Name="FSharpKey" Grid.Row="0" TextWrapping="Wrap" Text="G" Grid.Column="3" TextAlignment="Center" Grid.ColumnSpan="2" Margin="10,0"/>
         <TextBlock x:Name="GSharpKey" Grid.Row="0" TextWrapping="Wrap" Text="H" Grid.Column="4" TextAlignment="Center" Grid.ColumnSpan="2" Margin="10,0"/>
         <TextBlock x:Name="ASharpKey" Grid.Row="0" TextWrapping="Wrap" Text="J" Grid.Column="5" TextAlignment="Center" Grid.ColumnSpan="2" Margin="10,0"/>
-        <ProgressBar x:Name="CSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,19" Orientation="Vertical" Value="0" Grid.Column="0" Grid.Row="1" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="DSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,19" Orientation="Vertical" Value="0" Grid.Column="1" Grid.Row="1" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="FSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,19" Orientation="Vertical" Value="0" Grid.Column="3" Grid.Row="1" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="GSharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,19" Orientation="Vertical" Value="0" Grid.Column="4" Grid.Row="1" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <ProgressBar x:Name="ASharpVel" RenderTransformOrigin="0.5,0.5" Margin="12,0,0,19" Orientation="Vertical" Value="0" Grid.Column="5" Grid.Row="1" Foreground="Red" Background="#00E6E6E6" BorderBrush="#00BCBCBC" >
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
     </Grid>
 </UserControl>
